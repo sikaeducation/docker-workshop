@@ -1,25 +1,18 @@
-# Docker
+# Docker Workshop Instructions
 
-* Run 3 existing Docker apps
-  * Express + React + Postgres
-  * Rails
-  * Wordpress
-* Step-by-step: Dockerize a Node app with compose
-* Reading: YML
-* Reading: Compose files
-* Reading: What is Docker
-* Build and burn: Single compose files
-* Writing: What's cool about Docker?
+For any exercises that involve vocabulary or answer questions, actually write out full answers to them. It's very difficult to wrestle many of these ideas into words!
 
----
+## Session 1
 
-* Docker compose networks
-* Environment variables
-* Docker compose volumes
-* Custom Docker images
-* Docker image performance
-* Combining compose files
-* SSH into a container
-* Kill container
-* Cleaning up containers
-* Deploy to Heroku
+1. Read the content in [Docker Intro](docker-intro/)
+  * Then, do the [exercise](docker-intro/exercises.md)
+  * Then try to write definitions to each term in the [vocab list](docker-intro/vocabulary.md).
+  * Then try to answer each of the [questions](docker-intro/questions.md). They may require additional reading and research.
+2. Read the content in [YAML](yaml/)
+  * Then, do the [exercises](yaml/exercises.md)
+  * Then try to write definitions to each term in the [vocab list](docker-intro/vocabulary.md).
+  * Then try to answer each of the [questions](yaml/questions.md).
+3. Read the content in [Docker Compose](docker-compose-1/)
+  * Then, do the [exercise](docker-compose/exercises.md)
+  * Then try to write definitions to each term in the [vocab list](docker-compose/vocabulary.md).
+  * Then try to answer each of the [questions](docker-compose/questions.md).
