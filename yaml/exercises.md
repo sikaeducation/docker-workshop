@@ -169,12 +169,6 @@ Convert the following JSON to YAML:
       "title": {
           "rendered": "Why the IoT Threatens Your WordPress Site (and How to Fix It)"
       },
-      "content": {
-         ...
-      },
-      "excerpt": {
-          ...
-      },
       "author": 72546,
       "featured_media": 157542,
       "comment_status": "open",

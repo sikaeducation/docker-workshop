@@ -1,6 +1,6 @@
-YAML
-Serialization
-JSON
-XML
-YAML Collection
-YAML List
+* YAML
+* Serialization
+* JSON
+* XML
+* YAML Collection
+* YAML List
