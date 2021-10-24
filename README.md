@@ -10,9 +10,9 @@ For any exercises that involve vocabulary or answer questions, actually write ou
   * Then try to answer each of the [questions](docker-intro/questions.md). They may require additional reading and research.
 2. Read the content in [YAML](yaml/)
   * Then, do the [exercises](yaml/exercises.md)
-  * Then try to write definitions to each term in the [vocab list](docker-intro/vocabulary.md).
+  * Then try to write definitions to each term in the [vocab list](yaml/vocabulary.md).
   * Then try to answer each of the [questions](yaml/questions.md).
 3. Read the content in [Docker Compose](docker-compose-1/)
-  * Then, do the [exercise](docker-compose/exercises.md)
-  * Then try to write definitions to each term in the [vocab list](docker-compose/vocabulary.md).
-  * Then try to answer each of the [questions](docker-compose/questions.md).
+  * Then, do the [exercise](docker-compose-1/exercises.md)
+  * Then try to write definitions to each term in the [vocab list](docker-compose-1/vocabulary.md).
+  * Then try to answer each of the [questions](docker-compose-1/questions.md).
