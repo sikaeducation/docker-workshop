@@ -9,7 +9,7 @@
 * Docker Hub
     - A public repository of Dockerfiles
 * Docker Image
-    - A compiled Dockerfile
+    - A compiled Dockerfile; read-only instructions for creating a Docker container.
 * Docker Container
     - An instance of a Docker image
 * Docker Desktop
