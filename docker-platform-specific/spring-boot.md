@@ -8,7 +8,7 @@
 
 Add the following contents to the Dockerfile:
 
-```docker
+```dockerfile
 FROM openjdk:18-ea-24-bullseye
 RUN apt update && apt install -y sudo wget zip unzip && rm -rf /var/lib/apt/lists/*
 

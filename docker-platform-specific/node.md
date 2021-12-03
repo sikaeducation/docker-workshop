@@ -17,7 +17,7 @@ services:
 
 Some common optimizations for Node apps:
 
-```docker
+```dockerfile
 FROM node:16.13-alpine3.12
 WORKDIR /app
 

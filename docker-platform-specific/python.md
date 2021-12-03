@@ -16,7 +16,7 @@ services:
 
 Some common optimizations for Python apps:
 
-```docker
+```dockerfile
 FROM python:3.10.0
 WORKDIR /app
 

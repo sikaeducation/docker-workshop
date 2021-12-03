@@ -26,7 +26,7 @@ echo "USER_ID=`id -u`\nGROUP_ID=`id -g`" >> .env
 
 Add the following contents to a `Dockerfile` in your home directory:
 
-```docker
+```dockerfile
 FROM ruby:3.0.3 as base
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \

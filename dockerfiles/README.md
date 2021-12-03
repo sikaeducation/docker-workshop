@@ -19,7 +19,7 @@ A Dockerfile is a text file called `Dockerfile` (no extension), usually placed i
 
 ## Sample Dockerfile
 
-```docker
+```dockerfile
 FROM python:2.7-slim
 WORKDIR /app
 COPY . /app
