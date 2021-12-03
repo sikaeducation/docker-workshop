@@ -15,7 +15,7 @@ A Dockerfile is a text file called `Dockerfile` (no extension), usually placed i
 | `ENV` | Define an environment variable inside the container. |
 | `EXPOSE` | Expose a port inside the container to be bound to a port on the host computer. |
 | `ENTRYPOINT` | Define a command that should be run whenever a container is started with this image. This is generally not supposed to be overridden. |
-| `CMD` | Define a command that should be run on top of the ENTRYPOINT whenever a container is started with this image. This is generally supposed to be overriden when the container is run. |
+| `CMD` | Define a command that should be either run instead of the ENTRYPOINT or will be arguments or options to an `ENTRYPOINT` whenever a container is started with this image. |
 
 ## Sample Dockerfile
 
@@ -42,7 +42,10 @@ This Dockerfile:
 ## Watch Out!
 
 * The primary difference between `ENTRYPOINT` and `CMD` is their overrideability. If there's a command that the container should always start with, it's an `ENTRYPOINT` that can take a `CMD` as parameters. If there's no command the container should always start with, use `CMD` in the Dockerfile as a default that can be easily overridden whenever starting the container.
+* Note that to use an entrypoint as the script and a command as parameters, both need to be present in the Dockerfile even if the command is always overridden.
 * Values in Docker Compose for properties like `expose`, `command`, and `user` will add to the corresponding values in the Dockerfile if they're lists or clobber them if they conflict. Even if you're setting a value in the Docker Compose file, you should still set it in the Dockerfile so the image will still work outside of Docker Compose.
+* Dockerfiles don't have any concept of volumes. Any files needed to install dependencies need to copied into the image.
+* Even if you're setting things like the user and ports in Docker Compose, they should still be set in the Dockerfile. This is because the Docker image may end up being run outside of Compose using a tool like Kubernetes or the Docker Engine of a PaaS.
 
 ## Additional Resources
 

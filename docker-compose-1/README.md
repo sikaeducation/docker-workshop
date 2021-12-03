@@ -109,6 +109,7 @@ These are the most common commands used in Docker Compose:
 * Docker Containers are ephemeral, which means that all the data in them is destroyed when the container stops. The only way to persist data between containers is to store them in volumes.
 * Docker Compose doesn't require you to pull images from Docker Hub before using them. Running `docker-compose` with the `--build` flag will pull, build, or reuse images as needed.
 * `:latest` is a shortcut to the most recent tag of an image, but it should be avoided. The image it points to changes whenever a new one is published which takes away the predictability of containers.
+* Mounting a volume on a folder in a container will overwrite any files that were already in that folder
 
 ## Additional Resources
 

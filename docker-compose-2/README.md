@@ -19,13 +19,12 @@ services:
     image: kylecoberly/rails:2.7
 ```
 
-If the Dockerfile for a service is saved as part of the codebase, use the `context` property of the `build` property:
+If the Dockerfile for a service is saved as part of the codebase, set the path to it on the `build` key:
 
 ```yaml
 services:
   backend:
-    build:
-      - context: ./backend
+    build: .
 ```
 
 This should be a path to the folder containing the `Dockerfile`, relative to the location of the `docker-compose.yml` file.
@@ -39,15 +38,19 @@ services:
   backend:
     expose:
       - "443"
+    depends_on:
+      - database
   database:
     expose:
       - "5432"
   frontend:
     port:
       - "8000:443"
+    depends_on:
+      - backend
 ```
 
-Within your Docker environment, these services will available by their name. For example, your front-end should might make API calls to your backend at `https://backend:443`, and your backend might connect to your database at `postgres://database:5432`. The front-end will be available on the host at `http://localhost:8000`, and neither your backend nor your database will be directly accessible through the host.
+Services will available by their name on any service that `depends_on` them. For example, the app in the `frontend` should might make API calls to your backend at `https://backend:443`, and your backend might connect to your database at `postgres://database:5432`. The `frontend` service will be available on the host at `http://localhost:8000`, your database will not be available from the `frontend` container, and neither your backend nor your database will be directly accessible through the host.
 
 ### Entrypoints and Commands
 
@@ -111,6 +114,17 @@ services
         - NODE_ENV: development
 ```
 
+If the value being passed in is part of the host's environment, it can be referenced by prefixing it with a `$`:
+
+```yaml
+services
+  backend:
+    build:
+      context: ./path/to/Dockerfile
+      args:
+        - NODE_ENV: $NODE_ENV
+```
+
 ## Multiple Environments
 
 It's common to need slightly different configurations in different environments, such as one that you use in development and another one you use in production. You can selectively override parts of Docker Compose config files by using the `-f` option:
@@ -144,6 +158,7 @@ This is most useful for commands that create or modify files, such as initialize
 * You can control the order that containers start in with `depends_on`, but this doesn't actually ensure that any particular service is ready to accept requests yet. To do that, you need to use a script like [wait-for-it](https://github.com/vishnubob/wait-for-it).
 * `docker-compose exec` ignores the `entrypoint` and runs whatever command you give it.
 * Running commands in a container as your host user may have some issues. Since your user isn't actually added to the container, it doesn't have a username or a home directory, which can create problems with commands like `gem install`.
+* Docker Compose will automatically look for an `.env` file in the same directory as the compose file and will make any environment variables in it available in the compose file. The `env_file` key can be used to point to the path of a different `.env` file if needed. If you use an `.env` file with secrets, don't forget to add it to your `.gitignore` file!
 
 ## Additional Resources
 
@@ -151,3 +166,4 @@ This is most useful for commands that create or modify files, such as initialize
 | --- | --- |
 | [Docker Compose Overview](https://docs.docker.com/compose/) | Official docs for Docker Compose |
 | [Docker Compose Reference](https://docs.docker.com/compose/compose-file/compose-file-v3/) | Reference for all available configuration values for Docker Compose files |
+| [Docker Compose: Environment Variables](https://docs.docker.com/compose/environment-variables/) | Full guide to all of the environment variable options in Docker Compose |
