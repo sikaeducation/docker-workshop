@@ -33,22 +33,16 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -y \
   nodejs \
-  yarn \
-  sudo
+  yarn
 
 ARG USER_ID
 ENV USER_ID $USER_ID
 ARG GROUP_ID
 ENV GROUP_ID $GROUP_ID
-
 ARG USER=ruby
 ENV USER $USER
-
 RUN groupadd -g $GROUP_ID $USER && \
-    useradd -u $USER_ID -g $USER -m $USER && \
-    usermod -p "*" $USER && \
-    usermod -aG sudo $USER && \
-    echo "$USER ALL=NOPASSWD: ALL" >> /etc/sudoers.d/50-$USER
+    useradd -u $USER_ID -g $USER -m $USER
 
 WORKDIR /app
 USER $USER
