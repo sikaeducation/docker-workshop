@@ -137,6 +137,12 @@ The configuration values in later files will clobber the values in earlier files
 
 As these commands get long and unwieldy, they can be saved in shell scripts.
 
+If you want to see what a combination of Compose files results in (as well as testing whether your syntax is valid), run `docker-compose config`:
+
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml config
+```
+
 ## Running Commands as the Host User
 
 Most Docker containers run all of their commands as root. This is a problem if they create new files in your volume, as you'll be unable to edit them as your regular user. The solution is to tell `docker-compose` to run as your user:
