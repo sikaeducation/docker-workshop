@@ -1,2 +1,0 @@
-* Docker: Image Layer
-* `.dockerignore`
